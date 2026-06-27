@@ -4,6 +4,8 @@ import time
 
 class DedupeCache:
     def __init__(self, window_ms: int = 1500) -> None:
+        if window_ms <= 0:
+            raise ValueError("window_ms must be > 0")
         self.window_ms = window_ms
         self._cache: dict[str, float] = {}
         self.hits = 0
@@ -24,7 +26,7 @@ class DedupeCache:
         spreading_factor: int,
         coding_rate: int,
     ) -> str:
-        rounded_ts = int(timestamp * 1000) // max(self.window_ms, 1)
+        rounded_ts = int(timestamp * 1000) // self.window_ms
         digest = hashlib.sha256()
         digest.update(payload)
         digest.update(str(rounded_ts).encode())

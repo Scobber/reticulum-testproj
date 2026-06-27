@@ -31,8 +31,8 @@ class SemtechSX130xHAL(SX130xHAL):
         return []
 
     def transmit(self, payload: bytes, frequency: int, bandwidth: int, spreading_factor: int, coding_rate: int, tx_power: int) -> bool:
-        if not self.started:
-            return False
+        # Transmission is intentionally disabled in this initial stub until
+        # native Semtech HAL bindings are integrated.
         return False
 
     def set_channel_plan(self, channels: list[dict[str, int | str]]) -> None:
