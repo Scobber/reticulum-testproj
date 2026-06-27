@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reticulum-sx130x"
+version = "0.1.0"
+description = "Reticulum interface for Semtech SX130x concentrators"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "reticulum-sx130x contributors"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+sx130x-rns-test = "sx130x_rns.cli.test_tool:main"
+sx130x-rns-monitor = "sx130x_rns.cli.monitor:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
